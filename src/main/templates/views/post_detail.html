@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block 'link'%}
+        <link href='{% static 'css/style.css' %}' rel='stylesheet'>
+{% endblock %}
+
+{% block 'home'%}
+<a href="{% url 'home' %}">
+    Home
+</a>
+{% endblock %}
+{% block 'content' %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            {% if post.author.profile %}
+            <a class="mr-2" href="{% url 'profile-detail' post.author.profile.slug %}">{{ post.author }}</a>
+            {% else %}
+            <a class="mr-2" href="#">{{ post.author }}</a>
+            {% endif %}
+            <small class="text-muted">{{ post.published_at }}</small>
+        </div>
+        <h2 class="article-title">{{ post.title }}</h2>
+        <p class="article-content">{{ post.content }}</p>
+        {% if user == post.author %}
+        <div class="btn-group">
+            <a href="{% url 'post-update' pk=post.pk %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'post-delete' pk=post.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+</article>
+{% endblock %}

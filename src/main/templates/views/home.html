@@ -1,0 +1,74 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block "title" %}
+<title> 
+    Blogify Home
+</title>
+{% endblock %}
+
+{% block 'link' %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block 'content'%}
+    <h1>
+        Welcome, {{request.user.username}}.
+    </h1>
+
+
+<h2>Blog Posts</h2>
+{% for post in posts %}
+    <article class="media content-section  rounded shadow ">
+        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata">
+                {% if post.author.profile %}
+                <a class="mr-2" href="{% url 'profile-detail' post.author.profile.slug %}">{{ post.author }}</a>
+                {% else %}
+                <a class="mr-2" href="#">{{ post.author }}</a>
+                {% endif %}
+                <small class="text-muted">{{ post.published_at }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content|slice:":200" }}</p>
+        </div>
+    </article>
+{% endfor %}
+{% endblock %}
+
+{% block 'footer'%}
+<footer class="footer text-muted bg-dark py-5">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h2>About Us</h2>
+            <p> This blog was created because we believe in the power of creativity <br>
+                and its ability to shape the world.<br>
+                It is for the writers, to keep their pens bleeding,<br> 
+                and for the readers, to continue their quest for knowledge and truth.<br>
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="">info@blogify.com</a></p>
+            <p>Phone: +234 812 957 9867</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p style="text-align: center;">Powered by <a href= https://www.djangoproject.com/>Django</a></p>
+        <p>&copy; 2024 Blogify. All rights reserved.</p>
+    </div>
+</footer>
+
+{% endblock %}
+
+

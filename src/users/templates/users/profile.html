@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'link' %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block 'home'%}
+<a href="{% url 'home' %}">
+    Home
+</a>
+{% endblock %}
+
+{% block 'content' %}
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Info</legend>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    {{ u_form.username }}
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    {{ u_form.email }}
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label mt-4">Profile Picture</label>
+                    {% if profile.image.url %}
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="{{ profile.image.url }}" alt="Profile Image">
+                    </div>
+                    {% endif %}
+                    {{ p_form.image }}
+                </div>
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Bio</label>
+                    {{ p_form.bio }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-info">Update</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block 'footer' %}
+<footer class="footer text-muted py-5">
+<div class="footer-bottom">
+    <p style="text-align: center;">Powered by <a href= https://www.djangoproject.com/>Django</a></p>
+    <p>&copy; 2024 Blogify. All rights reserved.</p>
+</div>
+</footer>
+{% endblock %}

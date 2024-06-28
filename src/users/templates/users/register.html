@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'link' %}
+<link href='{% static 'css/login_style.css' %}' rel='stylesheet'>
+{% endblock %}
+
+{% block 'body' %}
+<div class="container logo">
+    <header class="navbar">
+        <a class="navbar-brand" href="#">
+            Blogify
+        </a>
+    </header>
+</div>
+<div class="login-container">
+        <h2>Register</h2>
+        <form  method= 'post' novalidate>
+            {% csrf_token %}
+            {{ register_form.non_field_errors }}
+            <div class="mb-3">
+                {{ register_form.username.label_tag }}
+                {{ register_form.username }}
+                {{ register_form.username.errors }}
+            </div>
+            <div class='mb-3'>
+                {{ register_form.email.label_tag }}
+                {{ register_form.email }}
+                {{ register_form.email.errors }}
+            </div>
+            <div class="mb-3">
+                {{ register_form.password1.label_tag }}
+                {{ register_form.password1 }}
+                {{ register_form.password1.errors }}
+            </div>
+            <div class="mb-3">
+                {{ register_form.password2.label_tag }}
+                {{ register_form.password2 }}
+                {{ register_form.password2.errors }}
+            </div>
+            <input type="submit" class="btn btn-primary" value="Register">
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">Already Have An Account? <a href="{% url 'login' %}">Sign In</a></small>
+        </div>
+</div>
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block 'footer' %}
+<footer class="footer text-muted py-5">
+<div class="footer-bottom">
+    <p style="text-align: center;">Powered by <a href= https://www.djangoproject.com/>Django</a></p>
+    <p>&copy; 2024 Blogify. All rights reserved.</p>
+</div>
+</footer>
+{% endblock %}
