@@ -139,12 +139,12 @@ input, textarea {
     color: #007bff;
 }
 
-.card {
-    width: 98vw;
+.card-blogs {
+    width: 90vw;
     border-radius: 30px;
     background: #d9e2f2;
     box-shadow: 7.5px 7.5px 15px #4c6fad,
-                -7.5px -7.5px 15px #4c6fad;
+                -7px -7.5px 15px #4c6fad;
    }
    
    
