@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -10,3 +10,8 @@ class PostForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({'class': 'form-control', 'placeholder': 'title'})
         self.fields['content'].widget.attrs.update({'class': 'form-control', 'placeholder': 'content'})
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']

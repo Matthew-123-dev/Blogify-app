@@ -48,7 +48,7 @@
 }
 
 .section2 {
-    background-color:#80aaff;
+    background-color:rgb(128, 170, 255);
 }
 
 .section3 {
@@ -102,3 +102,49 @@ input, textarea {
 .content-section {
     margin-bottom: 40px; 
 }
+
+.content-section {
+    background-color: rgb(217, 226, 242);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.article-metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.article-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.article-content {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.author-link {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.card {
+    width: 98vw;
+    border-radius: 30px;
+    background: #d9e2f2;
+    box-shadow: 7.5px 7.5px 15px #4c6fad,
+                -7.5px -7.5px 15px #4c6fad;
+   }
+   
+   

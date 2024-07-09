@@ -16,20 +16,38 @@
     <div class="media-body">
         <div class="article-metadata">
             {% if post.author.profile %}
-            <a class="mr-2" href="{% url 'profile-detail' post.author.profile.slug %}">{{ post.author }}</a>
+            <a class="mr-2 author-link" href="{% url 'profile-detail' post.author.profile.slug %}">{{ post.author }}</a>
             {% else %}
-            <a class="mr-2" href="#">{{ post.author }}</a>
+            <a class="mr-2 author-link" href="#">{{ post.author }}</a>
             {% endif %}
             <small class="text-muted">{{ post.published_at }}</small>
         </div>
         <h2 class="article-title">{{ post.title }}</h2>
-        <p class="article-content">{{ post.content }}</p>
+        <p class="article-content">{{ post.content|linebreaks }}</p>
         {% if user == post.author %}
         <div class="btn-group">
             <a href="{% url 'post-update' pk=post.pk %}" class="btn btn-primary">Update</a>
             <a href="{% url 'post-delete' pk=post.pk %}" class="btn btn-danger">Delete</a>
         </div>
         {% endif %}
+        <div class="comments-section">
+            <h3>Comments</h3>
+            {% for comment in comments %}
+            <div class="comment">
+                <p><strong>{{ comment.author }}</strong>:</p>
+                <p>{{ comment.content }}</p>
+                <p><small>{{ comment.created_at }}</small></p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="comment-form">
+            <h3>Leave a Comment</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 </article>
 {% endblock %}
