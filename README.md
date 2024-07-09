@@ -12,9 +12,10 @@ Blogify is an elementary blog app developed using Django's web-development frame
 ## Installation ##
 
 1. ### Clone the repository:
-
+~~~
    git clone https://github.com/Matthew-123-dev/Blogify-app.git
    cd Blogify-app
+~~~
 
 2. ### Create a virtual environment and activate it:
 ~~~
