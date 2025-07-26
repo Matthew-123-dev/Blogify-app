@@ -7,68 +7,37 @@
 </title>
 {% endblock %}
 
-{% block 'link' %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock %}
-
 {% block 'content'%}
-    <h1>
-        Welcome, {{request.user.username}}.
-    </h1>
+    <div class="glass-card">
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; margin-bottom: 20px;">
+            Welcome, {{request.user.username}}.
+        </h1>
+    </div>
 
-
-<h2>Blog Posts</h2>
 {% for post in posts %}
-    <article class="media content-section  rounded-shadow card-blogs ">
-        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-        <div class="media-body ">
-            <div class="article-metadata">
+    <article class="glass-card">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+            <img class="rounded-circle" src="{{ post.author.profile.image.url }}" 
+                 style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+            <div class="post-meta">
                 {% if post.author.profile %}
-                <a class="mr-2" href="{% url 'profile-detail' post.author.profile.slug %}">{{ post.author }}</a>
+                <a href="{% url 'profile-detail' post.author.profile.slug %}" 
+                   style="color: #3b82f6; text-decoration: none; font-weight: 600;">{{ post.author }}</a>
                 {% else %}
-                <a class="mr-2" href="#">{{ post.author }}</a>
+                <a href="#" style="color: #3b82f6; text-decoration: none; font-weight: 600;">{{ post.author }}</a>
                 {% endif %}
-                <small class="text-muted">{{ post.published_at }}</small>
+                <small style="color: #9ca3af; margin-left: 10px;">{{ post.published_at }}</small>
             </div>
-            <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content|slice:":200" }}</p>
         </div>
+        <h2 class="post-title">
+            <a href="{{ post.get_absolute_url }}" style="color: inherit; text-decoration: none;">
+                {{ post.title }}
+            </a>
+        </h2>
+        <p class="post-description">{{ post.content|slice:":200" }}{% if post.content|length > 200 %}...{% endif %}</p>
+        <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More</a>
     </article>
 {% endfor %}
-{% endblock %}
-
-{% block 'footer'%}
-<footer class="footer text-muted bg-dark py-5">
-    <div class="footer-container">
-        <div class="footer-section about">
-            <h2>About Us</h2>
-            <p> This blog was created because we believe in the power of creativity <br>
-                and its ability to shape the world.<br>
-                It is for the writers, to keep their pens bleeding,<br> 
-                and for the readers, to continue their quest for knowledge and truth.<br>
-            </p>
-        </div>
-        <div class="footer-section links">
-            <h2>Quick Links</h2>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-section contact">
-            <h2>Contact Us</h2>
-            <p>Email: <a href="">info@blogify.com</a></p>
-            <p>Phone: +234 812 957 9867</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p style="text-align: center;">Powered by <a href= https://www.djangoproject.com/>Django</a></p>
-        <p>&copy; 2024 Blogify. All rights reserved.</p>
-    </div>
-</footer>
-
 {% endblock %}
 
 

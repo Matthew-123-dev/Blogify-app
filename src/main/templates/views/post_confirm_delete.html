@@ -7,11 +7,22 @@
 {% endblock %}
 
 {% block 'content' %}
-<h2>Delete Post</h2>
-<p>Are you sure you want to delete "{{ post.title }}"?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-outline-danger">Confirm</button>
-</form>
-<a href="/home">Cancel</a>
+<div class="glass-card" style="max-width: 500px; margin: 50px auto; text-align: center;">
+    <h2 style="font-size: 2rem; font-weight: 700; color: #dc2626; margin-bottom: 20px;">Delete Post</h2>
+    <p style="color: #374151; font-size: 1.1rem; margin-bottom: 30px;">
+        Are you sure you want to delete "<strong>{{ post.title }}</strong>"?
+    </p>
+    <p style="color: #6b7280; margin-bottom: 30px;">This action cannot be undone.</p>
+    
+    <form method="post" style="display: inline-block; margin-right: 10px;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger" style="padding: 12px 30px;">
+            Yes, Delete
+        </button>
+    </form>
+    
+    <a href="{% url 'home' %}" class="btn btn-primary" style="padding: 12px 30px; text-decoration: none;">
+        Cancel
+    </a>
+</div>
 {% endblock %}

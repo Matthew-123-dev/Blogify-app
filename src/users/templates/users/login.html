@@ -1,48 +1,30 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block 'link' %}
-<link href='{% static 'css/login_style.css' %}' rel='stylesheet'>
-{% endblock %}
-
 {% block 'body' %}
-<div class="container logo">
+<div class="container">
     <header class="navbar">
-        <a class="navbar-brand" href="#">
-            Blogify
-        </a>
+        <div class="logo">
+            <b>Blogify</b>
+        </div>
     </header>
 </div>
-<div class="login-container">
-        <h2>Login</h2>
-        <form action= '' method= 'post'>
+<div class="container">
+    <div class="glass-card" style="max-width: 500px; margin: 50px auto;">
+        <h2 style="font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 30px; text-align: center;">Login</h2>
+        <form action='' method='post'>
             {% csrf_token %}
-            <div class="mb-3">
+            <div style="margin-bottom: 20px;">
                 <input type="text" class="form-control" name="username" placeholder="Username" required>
             </div>
-            <div class="mb-3">
+            <div style="margin-bottom: 20px;">
                 <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
-            <input type="submit" class="btn btn-primary" value="Login">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">Login</button>
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">Don't Have an Account? <a href="{% url 'register' %}">Sign Up</a></small>
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.3); margin-top: 30px; padding-top: 20px; text-align: center;">
+            <small style="color: #6b7280;">Don't Have an Account? <a href="{% url 'register' %}" style="color: #3b82f6; text-decoration: none;">Sign Up</a></small>
         </div>
-</div>
-{% if messages %}
-    <div class="container mt-3">
-        {% for message in messages %}
-        <div class="alert alert-{{message.tags}}">{{ message }}</div>
-        {% endfor %}
     </div>
-{% endif %}
-{% endblock %}
-
-{% block 'footer' %}
-<footer class="footer text-muted py-5">
-<div class="footer-bottom">
-    <p style="text-align: center;">Powered by <a href= https://www.djangoproject.com/>Django</a></p>
-    <p>&copy; 2024 Blogify. All rights reserved.</p>
 </div>
-</footer>
 {% endblock %}

@@ -1,15 +1,11 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block 'link'%}
-<link href='{% static 'css/style.css' %}' rel='stylesheet'>
-{% endblock %}
-
 {% block 'body'%} 
-<div>
+<div class="container">
     <header class="navbar">
         <div class="logo">
-            Blogify
+            <b>Blogify</b>
         </div>
         <nav class="nav-links">
             {% if user.is_authenticated %}
@@ -17,68 +13,39 @@
             <a href='post/new/'>Write</a>
             {% else %}
             <a href='/login'>Sign in</a>
-            <button type="button" class="btn btn-primary">
-                <a href='/register'>Get started</a>
-            </button>
+            <a href='/register' class="btn btn-primary">Get started</a>
             {% endif %}
         </nav>
     </header>
 </div>
-<div class='colour-section section1 animated-text'>
-    <h1>Wishing to learn something new? </h1>
-    <p style='color:black'><b>Check out our latest blog posts to discover.</b></p>
-    <button type="button" class="btn btn-primary">
-        <a href="/home">Check it out.</a>
-    </button>
-</div>
-<div class='colour-section section2 animated-text'>
-    <h1>Conceptualize your thoughts and feelings. <b><i>Anytime. Anywhere.</b></i></h1>
-    <p style='color:black'><b>Write blog posts for people to read.</b></p>
-    <button type="button" class="btn btn-primary">
-        <a href='post/new/'>Write.</a>
-    </button>
-</div>
-<div class='colour-section section3 animated-text'>
-    <h1>Planning to become a new member? 
-        <i><b>We've got you covered!</b></i>
-        <button type="button" class="btn btn-primary">
-            <a href='/register'>Sign up.</a>
-        </button>
-    <h1>
-</div>
-{% endblock %}
 
-{% block 'footer'%}
-<footer class="footer text-muted bg-dark py-5">
-    <div class="footer-container">
-        <div class="footer-section about">
-            <h2>About Us</h2>
-            <p> This blog was created because we believe in the power of creativity <br>
-                and its ability to shape the world.<br>
-                It is for the writers, to keep their pens bleeding,<br> 
-                and for the readers, to continue their quest for knowledge and truth.<br>
-            </p>
-        </div>
-        <div class="footer-section links">
-            <h2>Quick Links</h2>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/home">Blog</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-section contact">
-            <h2>Contact Us</h2>
-            <p>Email: <a href="">info@blogify.com</a></p>
-            <p>Phone: +234 812 957 9867</p>
-        </div>
+<div class="container">
+    <div class="glass-card main-welcome">
+        <h1 class="main-title">Wishing to learn something new?</h1>
+        <p class="main-subtitle">Check out our latest blog posts to discover amazing content.</p>
+        <a href="/home" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+            Check it out
+        </a>
     </div>
-    <div class="footer-bottom">
-        <p style="text-align: center;">Powered by <a href= https://www.djangoproject.com/>Django</a></p>
-        <p>&copy; 2024 Blogify. All rights reserved.</p>
+    
+    <div class="glass-card main-welcome">
+        <h1 class="main-title">Conceptualize your thoughts and feelings</h1>
+        <p class="main-subtitle"><strong>Anytime. Anywhere.</strong></p>
+        <p style="color: #6b7280; margin-bottom: 30px;">Write blog posts for people to read.</p>
+        <a href='post/new/' class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+            Start Writing
+        </a>
     </div>
-</footer>
-
+    
+    {% if not user.is_authenticated %}
+    <div class="glass-card main-welcome">
+        <h1 class="main-title">Planning to become a new member?</h1>
+        <p class="main-subtitle"><strong>We've got you covered!</strong></p>
+        <a href='/register' class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+            Sign up
+        </a>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
 

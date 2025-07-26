@@ -11,9 +11,8 @@
         {% block 'title' %}
         <title>Blogify. Never run out of ideas.</title>
         {% endblock %}
-        <link href='{% static 'css/bootstrap.min.css' %}' rel='stylesheet'>
         {% block 'link'%}
-        <link href='{% static 'css/style.css' %}' rel='stylesheet'>
+        <link href='{% static 'css/glassmorphism.css' %}' rel='stylesheet'>
         {% endblock %}
     </head>
     <body>
@@ -26,7 +25,7 @@
         {% endfor %}
         {% endif %}
         {% block 'body' %}
-        <div>
+        <div class="container">
             <header class="navbar">
                 <div class="logo">
                     <b>
@@ -42,20 +41,24 @@
                     <a href="{% url 'post-create'%}">
                         Write
                     </a>
-                    <button type="button" class="btn btn-outline-danger">
-                        <a href='{% url 'logout' %}'>Logout</a>
-                    </button>
+                    <a href='{% url 'logout' %}' class="btn btn-outline-danger">
+                        Logout
+                    </a>
                 </nav>
             </header>
         </div>
         {% endblock %}
-        {% block 'content' %}
-        {% endblock %}
+        <div class="container">
+            {% block 'content' %}
+            {% endblock %}
+        </div>
     </body>
     {% block  'footer'%}
-    <footer class="footer text-muted bg-dark py-5">
-        <p style='text-align: center;'>&copy; {% now 'Y' %} Blogify. All rights reserved. 
-            Powered by <a href= https://www.djangoproject.com/>Django</a></p>
-    </footer>
+    <div class="container">
+        <footer class="footer">
+            <p>&copy; {% now 'Y' %} Blogify. All rights reserved. 
+                Powered by <a href= https://www.djangoproject.com/>Django</a></p>
+        </footer>
+    </div>
     {% endblock %}
 </html>

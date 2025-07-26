@@ -1,53 +1,65 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-{% block 'link'%}
-        <link href='{% static 'css/style.css' %}' rel='stylesheet'>
-{% endblock %}
-
 {% block 'home'%}
 <a href="{% url 'home' %}">
     Home
 </a>
 {% endblock %}
+
 {% block 'content' %}
-<article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-    <div class="media-body">
-        <div class="article-metadata">
+<article class="glass-card">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+        <img src="{{ post.author.profile.image.url }}" alt="Author" 
+             style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+        <div>
             {% if post.author.profile %}
-            <a class="mr-2 author-link" href="{% url 'profile-detail' post.author.profile.slug %}">{{ post.author }}</a>
+            <a href="{% url 'profile-detail' post.author.profile.slug %}" 
+               style="color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.1rem;">{{ post.author }}</a>
             {% else %}
-            <a class="mr-2 author-link" href="#">{{ post.author }}</a>
+            <a href="#" style="color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 1.1rem;">{{ post.author }}</a>
             {% endif %}
-            <small class="text-muted">{{ post.published_at }}</small>
-        </div>
-        <h2 class="article-title">{{ post.title }}</h2>
-        <p class="article-content">{{ post.content|linebreaks }}</p>
-        {% if user == post.author %}
-        <div class="btn-group">
-            <a href="{% url 'post-update' pk=post.pk %}" class="btn btn-primary">Update</a>
-            <a href="{% url 'post-delete' pk=post.pk %}" class="btn btn-danger">Delete</a>
-        </div>
-        {% endif %}
-        <div class="comments-section">
-            <h3>Comments</h3>
-            {% for comment in comments %}
-            <div class="comment">
-                <p><strong>{{ comment.author }}</strong>:</p>
-                <p>{{ comment.content }}</p>
-                <p><small>{{ comment.created_at }}</small></p>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="comment-form">
-            <h3>Leave a Comment</h3>
-            <form method="post">
-                {% csrf_token %}
-                {{ comment_form.as_p }}
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <div style="color: #9ca3af; font-size: 0.9rem;">{{ post.published_at }}</div>
         </div>
     </div>
+    
+    <h1 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; margin-bottom: 20px; line-height: 1.2;">
+        {{ post.title }}
+    </h1>
+    
+    <div style="color: #374151; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; white-space: pre-wrap;">
+        {{ post.content|linebreaks }}
+    </div>
+    
+    {% if user == post.author %}
+    <div style="display: flex; gap: 10px; margin-bottom: 30px;">
+        <a href="{% url 'post-update' pk=post.pk %}" class="btn btn-primary">Update</a>
+        <a href="{% url 'post-delete' pk=post.pk %}" class="btn btn-outline-danger">Delete</a>
+    </div>
+    {% endif %}
 </article>
+
+<!-- Comments Section -->
+<div class="glass-card">
+    <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 20px;">Comments</h3>
+    
+    {% for comment in comments %}
+    <div style="background: rgba(255, 255, 255, 0.3); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+        <div style="font-weight: 600; color: #374151; margin-bottom: 8px;">{{ comment.author }}</div>
+        <div style="color: #4b5563; line-height: 1.6; margin-bottom: 8px;">{{ comment.content }}</div>
+        <div style="color: #9ca3af; font-size: 0.9rem;">{{ comment.created_at }}</div>
+    </div>
+    {% endfor %}
+    
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.3); padding-top: 20px; margin-top: 20px;">
+        <h4 style="font-size: 1.2rem; font-weight: 600; color: #1f2937; margin-bottom: 15px;">Leave a Comment</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                {{ comment_form.content }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Comment</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
