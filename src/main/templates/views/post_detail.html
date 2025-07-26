@@ -27,8 +27,8 @@
         {{ post.title }}
     </h1>
     
-    <div style="color: #374151; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; white-space: pre-wrap;">
-        {{ post.content|linebreaks }}
+    <div class="post-content" style="color: #374151; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px;">
+        {{ post.content|safe }}
     </div>
     
     {% if user == post.author %}

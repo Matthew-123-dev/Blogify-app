@@ -1,0 +1,33 @@
+/* CKEditor Override CSS - Force Glassmorphism */
+body,
+html {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a8edea 75%, #fed6e3 100%) !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    min-height: 100vh !important;
+}
+
+/* Override any CKEditor body styles */
+body.cke_editable {
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: #374151 !important;
+    padding: 20px !important;
+}
+
+/* Force all CKEditor elements to respect glassmorphism */
+.cke_editable {
+    background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Ensure form elements maintain styling */
+.form-control,
+input[type="text"],
+input[type="email"], 
+input[type="password"],
+textarea {
+    background: rgba(255, 255, 255, 0.4) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 15px !important;
+    color: #374151 !important;
+}

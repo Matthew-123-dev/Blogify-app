@@ -21,29 +21,52 @@
 
 <div class="container">
     <div class="glass-card main-welcome">
-        <h1 class="main-title">Wishing to learn something new?</h1>
-        <p class="main-subtitle">Check out our latest blog posts to discover amazing content.</p>
-        <a href="/home" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
-            Check it out
-        </a>
+        <h1 class="main-title">Discover Amazing Content</h1>
+        <p class="main-subtitle">Explore our collection of insightful blog posts, tutorials, and thought-provoking articles.</p>
+        <p class="main-description">
+            Whether you're looking to learn something new, stay updated with the latest trends, or dive deep into topics that matter to you, our blog has something for everyone.
+        </p>
+        <div class="main-cta">
+            <a href="/home" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+                Explore Posts
+            </a>
+        </div>
     </div>
     
     <div class="glass-card main-welcome">
-        <h1 class="main-title">Conceptualize your thoughts and feelings</h1>
-        <p class="main-subtitle"><strong>Anytime. Anywhere.</strong></p>
-        <p style="color: #6b7280; margin-bottom: 30px;">Write blog posts for people to read.</p>
-        <a href='post/new/' class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
-            Start Writing
-        </a>
+        <h1 class="main-title">Share Your Ideas</h1>
+        <p class="main-subtitle">Transform your thoughts into engaging stories that inspire and educate others.</p>
+        <p class="main-description">
+            Our powerful writing tools make it easy to create beautiful, formatted posts. Whether you're sharing tutorials, personal experiences, or professional insights, your voice matters.
+        </p>
+        <div class="main-cta">
+            {% if user.is_authenticated %}
+            <a href='post/new/' class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+                Start Writing
+            </a>
+            {% else %}
+            <a href='/login' class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+                Sign In to Write
+            </a>
+            {% endif %}
+        </div>
     </div>
     
     {% if not user.is_authenticated %}
     <div class="glass-card main-welcome">
-        <h1 class="main-title">Planning to become a new member?</h1>
-        <p class="main-subtitle"><strong>We've got you covered!</strong></p>
-        <a href='/register' class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
-            Sign up
-        </a>
+        <h1 class="main-title">Join Our Community</h1>
+        <p class="main-subtitle">Become part of a vibrant community of writers, readers, and knowledge seekers.</p>
+        <p class="main-description">
+            Create your account today to start writing your own posts, engage with other authors, and build your personal profile. It's completely free to get started.
+        </p>
+        <div class="main-cta">
+            <a href='/register' class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+                Create Account
+            </a>
+            <a href='/login' style="margin-left: 15px; color: #3b82f6; text-decoration: none; font-weight: 600;">
+                Already have an account?
+            </a>
+        </div>
     </div>
     {% endif %}
 </div>

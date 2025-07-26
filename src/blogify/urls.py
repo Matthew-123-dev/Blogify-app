@@ -25,6 +25,7 @@ from users import urls as users_app_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include(main_app_urls)),
     path('', include(users_app_urls)),
 ]

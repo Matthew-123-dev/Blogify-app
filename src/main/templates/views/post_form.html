@@ -1,4 +1,20 @@
 {% extends "base/base.html" %}
+{% load static %}
+
+{% block 'link' %}
+<link href='{% static 'css/glassmorphism.css' %}' rel='stylesheet'>
+{{ form.media }}
+<link href='{% static 'css/glassmorphism.css' %}' rel='stylesheet'>
+<link href='{% static 'css/ckeditor-override.css' %}' rel='stylesheet'>
+<style>
+/* Inline critical CSS to ensure glassmorphism is maintained */
+body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a8edea 75%, #fed6e3 100%) !important;
+    min-height: 100vh !important;
+    padding: 20px !important;
+}
+</style>
+{% endblock %}
 
 {% block 'home'%}
 <a href="{% url 'home' %}">

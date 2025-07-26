@@ -253,21 +253,174 @@ input[type="file"] {
 
 /* Main page styling */
 .main-welcome {
-    text-align: center;
+    text-align: left;
     margin-bottom: 40px;
+    padding: 40px;
 }
 
 .main-title {
     font-size: 3rem;
     font-weight: 900;
     color: #1f2937;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .main-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    color: #6b7280;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.main-description {
+    font-size: 1.1rem;
     color: #6b7280;
     margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.main-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* CKEditor Styling - Enhanced specificity */
+.django-ckeditor-widget,
+.django-ckeditor-widget iframe {
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.cke_chrome {
+    border-radius: 15px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+}
+
+.cke_top {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border: none !important;
+    border-radius: 15px 15px 0 0 !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.cke_contents {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: none !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+.cke_bottom {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border: none !important;
+    border-radius: 0 0 15px 15px !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Force body and html to maintain glassmorphism background */
+body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a8edea 75%, #fed6e3 100%) !important;
+    min-height: 100vh !important;
+    padding: 20px !important;
+}
+
+html {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a8edea 75%, #fed6e3 100%) !important;
+}
+
+/* Ensure container maintains glassmorphism */
+.container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* Rich text content display */
+.post-content {
+    line-height: 1.7;
+}
+
+.post-content h1, .post-content h2, .post-content h3, 
+.post-content h4, .post-content h5, .post-content h6 {
+    margin: 20px 0 15px 0;
+    color: #1f2937;
+}
+
+.post-content p {
+    margin-bottom: 15px;
+}
+
+.post-content ul, .post-content ol {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+.post-content blockquote {
+    border-left: 4px solid rgba(59, 130, 246, 0.5);
+    margin: 20px 0;
+    padding: 15px 20px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.post-content table th,
+.post-content table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.post-content table th {
+    background: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+}
+
+/* CKEditor toolbar buttons glassmorphism styling */
+.cke_toolgroup {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 10px !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+.cke_button {
+    background: transparent !important;
+    border-radius: 8px !important;
+}
+
+.cke_button:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.cke_button_on {
+    background: rgba(59, 130, 246, 0.3) !important;
 }
 
 /* Responsive design */
