@@ -6,3 +6,5 @@ django-cors-headers==4.3.1
 django-phonenumber-field==7.3.0
 phonenumbers==8.13.27
 django-ckeditor==6.7.0
+dj-database-url==2.1.0
+whitenoise==6.6.0
